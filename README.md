@@ -11,7 +11,8 @@ On the other hand, It receives read/write commands from the IoT Hub and serves t
 W.r.t this data flow, we can come up with a structure for gateway.py as shown below;
 
 #### Gateway.py Structure
-PSEUDO - CODE
+##### PSEUDO - CODE
+     
      Retrieve connection string from venv and initialiase global variables
     
      Function that retrieves telemetry data from modbus slave device
