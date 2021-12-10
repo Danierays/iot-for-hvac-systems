@@ -1,4 +1,4 @@
-## HVAC Device -> PC -> JPI(MyUplink)
+## HVAC Device -> PC -> Cloud(MyUplink)
 
 ### Device Hierarchy
 ```txt
