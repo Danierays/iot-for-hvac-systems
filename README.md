@@ -8,7 +8,7 @@
 ```
 The gateway retrieves telemetry from the connected modbus slave device, converts it to protobuf formatted data and sends it to the IoT hub. 
 On the other hand, It receives read/write commands from the IoT Hub and serves the command accordingly.
-W.r.t this data flow, we can come up with a structure for gateway.py as shown below;
+With respect to this data flow, we can come up with a structure for gateway.py as shown below;
 
 #### Gateway.py Structure
 ##### PSEUDO - CODE
