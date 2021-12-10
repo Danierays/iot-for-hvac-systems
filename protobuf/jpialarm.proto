@@ -1,0 +1,42 @@
+syntax = "proto3";
+package JPI.Cloud.Protobuf.Alarm;
+
+message AlarmData {
+    /* Alarm id, or alarm number, is a unique number indicating what kind of alarm it is.
+       The list of possible numbers is up to each product to define. Only reserved number
+       is 0 which indicates "no alarm". If sending this it will automatically clear all
+       active alarms in the cloud system.*/
+    uint32 alarmId = 1;
+    /* Not used??? */
+    uint32 messageId = 2;
+    /* Severity level of the alarm. The severity level controls what happens with the alarm
+       when received in the cloud, i.e. if push notifications are sent and how it is
+       presented in UI. */
+    uint32 severity = 3;
+    /* Timestamp for when the alarm occured. UTC, number of seconds since 1970-01-01 00:00:00 */
+    uint32 datetime = 4;
+    /* Status, pick any value form the status enum */
+    Status status = 5;
+    /* Text id for the header/title of the alarm */
+    uint32 headerId = 6;
+    /* Text id for the description of the alarm */
+    uint32 descriptionId = 7;
+    /* Name of the equipment that the alarm occured on. Only one single alarm can occur
+       on a single equipment. Therefore, to provide multiple alarms (i.e. when having
+       multiple heat pumps in cascade) use the equipName to separate them. Leave empty
+       if not used. */
+    string equipName = 8;
+}
+
+enum Status {
+    /* Unknown status */
+    Unknown = 0;
+    /* Alarm is active / alarm has occured */
+    Active = 1;
+    /* Alarm has been dismissed/cleared locally by the system itself */
+    DismissedByDevice = 2;
+    /* Alarm has been reset on the device */
+    ResetByUserOnDevice = 3;
+    /* Alarm has been reset from cloud */
+    ResetByUserFromCloud = 4;
+}

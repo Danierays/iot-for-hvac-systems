@@ -1,0 +1,367 @@
+# The gateway identifier.
+gwid: gateway-1
+# This setting allows to filter log messages.
+loglevel: info
+# Configure the field-bus used by the gateway.
+fieldbus:
+    # The field-bus communication protocol. Currently only "modbus rtu" is supported.
+    protocol: modbus
+    # Configure the modbus serial communication.
+    modbus:
+        # The modbus framing.
+        method: 'rtu'
+        # The serial port to be used for the modbus.
+        port: 'COM9'
+        # The bit parity, can be either of none "N", even "E" or odd "O".
+        parity: 'E'
+        # The baud-rate for the serial connection.
+        baudrate: 19200
+        # The size of a data word bits, can be only a multiple of 8.
+        bytesize: 8
+        # The number of stop-bits. Usually, if parity is "N", the stopbit is 2, otherwise 1.
+        stopbits: 1
+        # The field-bus communication timeout in seconds.
+        timeout: 10
+# The configuration of the slaves connected to the gateway.
+slaves:
+    optima-251:
+    # The name of the slave device. Must be unique for each gateway.
+        sid: optima
+        # Configure the mapping between parameter names and registers.
+        input_registers:
+            block-1:
+                supply_air(T1):
+                    id: 10312
+                    address: 00
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                T2:
+                    address: 01
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                fresh_air(T3):
+                    id: 10313
+                    address: 02
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                exhaust_air(T4):
+                    id: 10314
+                    address: 03
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                T5:
+                    address: 04
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                T6:
+                    address: 05
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                extract_air(T7):
+                    id: 10315
+                    address: 06
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                frost(T8):
+                    id: 10316
+                    address: 07
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                extra_sensor(T9):
+                    id: 10317
+                    address: 08
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                room_temperature(T2_panel):
+                    id: 10311
+                    address: 09
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                humidity_sensor:
+                    id: 10318
+                    address: 10
+                    unit: "%"
+                humidity_setpoint(calc):
+                    id: 10319
+                    address: 11
+                    unit: "%"
+                T10:
+                    address: 12
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                T11:
+                    address: 13
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                T12:
+                    address: 14
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                T13:
+                    address: 15
+                    unit: "°C"
+                    offset: -300
+                    decimal: 1
+                brand_alarm_com_status:
+                    address: 16
+                brand_testresults:
+                    address: 17
+                brand_test_date:
+                    address: 18
+                brand_test_month:
+                    address: 19
+                brand_test_year:
+                    address: 20
+                brand_test_time:
+                    address: 21
+                brand_test_minute:
+                    address: 22
+                brand_test_err:
+                    address: 23
+            block-2:
+                alarm:
+                    address: 101
+                supply_fan:
+                    id: 10321
+                    address: 102
+                    unit: "%"
+                extract_fan:
+                    id: 10323
+                    address: 103
+                    unit: "%"
+                bypass_rate:
+                    id: 10327
+                    address: 104
+                    unit: "%"
+                watervalve:
+                    id: 10328
+                    address: 105
+                    unit: "%"
+                humidity_fan_control:
+                    id: 10325
+                    address: 106
+                    unit: "%"
+                    offset: 100
+                bypass_status:
+                    id: 10326
+                    address: 107
+                supply_fanspeed:
+                    id: 10322
+                    address: 108
+                    unit: "rpm"
+                extract_fanspeed:
+                    id: 10324
+                    address: 109
+                    unit: "rpm"
+        # Registers that can be read or written.
+        holding_registers:
+            block-1:
+                # The register alias.
+                room_temperature:
+                    #identifiant of the register(in accordance with to haystack file)
+                    id: 1021
+                    # The address of the register.
+                    address: 00
+                    # The decimal divider that is used for the raw value. Defaults to 0.
+                    decimal: 1
+                    # The unit of the parameter.
+                    unit: '°C'
+                    # The offset, that is applied to the data value. Defaults to 0.
+                    offset: 100
+                preheat:
+                    id: 10413
+                    address: 01
+                reheat:
+                    id: 10414
+                    address: 02
+                timer_level_3_and_4:
+                    id: 104161
+                    address: 03
+                filter_change:
+                    id: 104173
+                    address: 04
+                humidity:
+                    id: 10415
+                    address: 05
+                level1_supply:
+                    id: 1042111
+                    address: 06
+                    unit: "%"
+                level2_supply:
+                    id: 1042112
+                    address: 07
+                    unit: "%"
+                level3_supply:
+                    id: 1042113
+                    address: 08
+                    unit: "%"
+                level1_extract:
+                    id: 1042121
+                    address: 09
+                    unit: "%"
+                level2_extract:
+                    id: 1042122
+                    address: 10
+                    unit: "%"
+                level3_extract:
+                    id: 1042123
+                    address: 11
+                    unit: "%"
+                T2_adjustment:
+                    id: 1022
+                    address: 12
+                    unit: '°C'
+                    offset: -50
+                    decimal: 1
+                level_3_and_4(hour):
+                    id: 104162
+                    address: 13
+                    unit: "hours"
+                filter_change_autostop:
+                    id: 104172
+                    address: 14
+                regulation_form:
+                    id: 104223
+                    address: 15
+                preheat_temperature:
+                    id: 104234
+                    address: 16
+                    unit: '°C'
+                    offset: -150
+                    decimal: 1
+                bypass_max:
+                    id: 104241
+                    address: 17
+                    unit: '°C'
+                    decimal: 1
+                water_reg_interval:
+                    id: 104225
+                    address: 18
+                    unit: "secs"
+                power_reg_interval:
+                    id: 104231
+                    address: 19
+                    unit: "min"
+                frost_reduction:
+                    id: 104222
+                    address: 20
+                    unit: "°C"
+                    decimal: 1
+                frost:
+                    id: 104221
+                    address: 21
+                frost_default:
+                    id: 104226
+                    address: 22
+                    unit: '°C'
+                    decimal: 1
+                aux_relay:
+                    id: 104224
+                    address: 23
+                system_stop:
+                    id: 104227
+                    address: 24
+                end_bypass_T3:
+                    id: 104242
+                    address: 25
+                    unit: '°C'
+                modbus_mode:
+                    id: 104261
+                    address: 26
+                # The slave address is a string to allow the usage of IP addresses in the future.
+                modbus_address:
+                    id: 104262
+                    address: 27
+                humidity_max_temp:
+                    id: 104181
+                    address: 28
+                    unit: '°C'
+                humidity_max_value:
+                    id: 104182
+                    address: 29
+                    unit: "%"
+                humidity_fanspeed:
+                    id: 104183
+                    address: 30
+                    unit: "rpm"
+                humidity_regulation:
+                    id: 104184
+                    address: 31
+                    unit: "secs"
+                right/left:
+                    id: 104228
+                    address: 32
+                preheat_pi_p:
+                    id: 104232
+                    address: 33
+                preheat_pi_i:
+                    id: 104233
+                    address: 34
+                preheat_reg:
+                    id: 104235
+                    address: 35
+                    unit: "secs"
+                reheat_offset:
+                    id: 104236
+                    address: 36
+                    unit: '°C'
+                    decimal: 1
+                    offset: 150
+                reheat_pi_p:
+                    id: 104237
+                    address: 37
+                reheat_pi_i:
+                    id: 104238
+                    address: 38
+                reheat_reg:
+                    id: 104239
+                    address: 39
+                    unit: "secs"
+                demand_cntrl:
+                    id: 104251
+                    address: 40
+                fire_damper(quantity):
+                    id: 104252
+                    address: 41
+                fire_damper_test:
+                    id: 104253
+                    address: 42
+                fire_test_day:
+                    id: 104254
+                    address: 43
+                fire_test_time:
+                    id: 104255
+                    address: 44
+            block-2:
+                fan_mode:
+                    id: 1011
+                    address: 100
+                not-defined_1:
+                    address: 101
+                heat:
+                    id: 10411
+                    address: 102
+                not-defined_2:
+                    address: 103
+                not-defined_3:
+                    address: 104
+                filter_reset:
+                    id: 104171
+                    address: 105
+                heat_timer:
+                    id: 10412
+                    address: 106
+                    unit: "hour"

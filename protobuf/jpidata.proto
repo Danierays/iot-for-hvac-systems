@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package JPI.Cloud.Protobuf.Telemetry;
+
+message JPIDataPair {
+	uint32 id = 1;
+	oneof val{
+		int64 intval = 2;
+		string strval = 3;
+	}
+}
+
+message JPIDataTimestamp {
+	uint32 timestamp = 	1;
+	repeated JPIDataPair data = 2;
+}
+
+message JPIDataDelivery {
+	repeated JPIDataTimestamp timestamps = 1;
+}
