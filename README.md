@@ -6,6 +6,13 @@
 |   |
 |   |-- OPT-251
 ```
+### Architecture
+![image](https://user-images.githubusercontent.com/65251073/146212367-f69d7df5-d4c0-4bfe-bd79-b1d6a4ab51fc.png)
+
+### Sequence Diagram
+![image](https://user-images.githubusercontent.com/65251073/146212318-d0ad71a1-3fd3-4a44-a935-43ce0c2fcbf5.png)
+ 
+### Flow Process
 The gateway retrieves telemetry from the connected modbus slave device, converts it to protobuf formatted data and sends it to the IoT hub. 
 On the other hand, It receives read/write commands from the IoT Hub and serves the command accordingly.
 With respect to this data flow, we can come up with a structure for gateway.py as shown below;
