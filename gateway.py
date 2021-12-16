@@ -1,3 +1,12 @@
+###########################################################################
+# @brief This file contains the gateway software which runs on TEST PC-1
+#
+# @author: Daniel Isaac K. Njamen
+# @date: <01/05/2021>
+#
+###########################################################################
+
+# Import neccesary libraries
 import asyncio
 from pymodbus.client.sync import ModbusSerialClient as ModbusClient
 from azure.iot.device.aio import IoTHubDeviceClient
