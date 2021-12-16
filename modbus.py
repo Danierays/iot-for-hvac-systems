@@ -1,3 +1,13 @@
+###########################################################################
+# @brief This file contains the modbus gateway which retrieves telemetry
+# from the HVAC units
+#
+# @author: Daniel Isaac K. Njamen
+# @date: <01/05/2021>
+#
+###########################################################################
+
+# Importing neccesary libraries
 from pymodbus.client.sync import ModbusSerialClient as ModbusClient
 from scr.util import add_offset_and_decimal, remove_offset_and_decimal
 from argparse import ArgumentParser
